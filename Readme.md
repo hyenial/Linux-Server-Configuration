@@ -237,5 +237,11 @@ application.secret_key = 'secretkey'
 - dont forget the change JSON file location in your script
 - Google Authorization need valid domain name, **xip.io** extension of domain name is not accepted after 2020
 
+## Resorces
+- How to Deploy a Flask App to a Linux Server  https://www.youtube.com/watch?v=YFBRVJPhDGY
+- How To Deploy a Flask Application on an Ubuntu VPS https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps 
+- 20 Basic Ubuntu Commands And Terminal Shortcuts Every Beginner Must Know https://techlog360.com/basic-ubuntu-commands-terminal-shortcuts-linux-beginner/
+- 
+
 
 
