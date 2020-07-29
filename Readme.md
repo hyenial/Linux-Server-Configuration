@@ -45,14 +45,14 @@ This documents explains how to deploy your Python Flask application
 - Save by `ctrl+S` and exit from nano with `ctrl+X`
 - Restart SSH with `sudo service ssh restart`
 
-## 4. ADD Rules in AWS Lighthouse PAge
-----
-- it is important to add new countom port on AWS manage page under the **NETWORKING** tab
+## 4. ADD Rules in AWS Lighthouse Page
 
- | Custom | TCP | 2200 |
+- it is important to add new countom port on AWS manage page under the **NETWORKING** tab
+- | Custom | TCP | 2200 |
 | Custom | TCP | 5000 |
 | Custom | TCP | 8000 |
 | Custom | udp | 123  |
+
 
 ## 5. Setup Firewall 
 ----
