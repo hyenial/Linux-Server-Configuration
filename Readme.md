@@ -18,7 +18,7 @@ This documents explains how to deploy your Python Flask application
 
 
 # Server Configuration Instruction
--------------
+
 ## 1. Creating a AWS Lightsail instance
 ----
 - Go to **AWSLightSail** and create an OS Only **Ubuntu 18.04** instance.
@@ -28,6 +28,7 @@ This documents explains how to deploy your Python Flask application
 - When you enter the virtual machine terminal , write the following command to start to update and upgrade all missing packages and security   `Sudo apt-get update` and  `sudo apt-get upgrade`
 - 
 ## 2. SSH Keys
+----
 - this allows you to connect your virtual machine by your local machine Terminal or FTTP program
 - Go to your AWS account and select SSH keys
 - Create .ssh folder in your local machine terminal by `mkdir .ssh`. if you cannot try `sudo mkdir .ssh `.
@@ -38,12 +39,14 @@ This documents explains how to deploy your Python Flask application
 - To connect run in your terminal `ssh -i ~/.ssh/lightsail_key.rsa ubuntu@18.212.232.50`
 
 ## 3. CHANGE THE SERVER PORT
+----
 - Run in your terminal `sudo nano /etc/ssh/sshd_config ` edit `etc/ssh/sshd_config ` file.
 - Edit the file changing **22 to 2200** in the 5th line.
 - Save by `ctrl+S` and exit from nano with `ctrl+X`
 - Restart SSH with `sudo service ssh restart`
 
 ## 4. ADD Rules in AWS Lighthouse PAge
+----
 - it is important to add new countom port on AWS manage page under the **NETWORKING** tab
 - | Custom | TCP | 2200 |
 | Custom | TCP | 5000 |
@@ -51,7 +54,7 @@ This documents explains how to deploy your Python Flask application
 | Custom | udp | 123  |
 
 ## 5. Setup Firewall 
-
+----
 - `sudo ufw status` **The UFW should be inactive.**
 - `sudo ufw default deny incoming` **Deny any incoming traffic.**
 - `sudo ufw default deny outgoing` **Enable outgoing traffic.**
@@ -82,6 +85,7 @@ Apache (v6)                ALLOW       Anywhere (v6)
 
 ```
 ## 6. Create Grader User
+----
 - Install finger to manage user by `sudo apt-get install finger`
 - to create user `sudo adduser grader`
 - Set password and details for user.
@@ -103,6 +107,7 @@ User grader may run the following commands on ip-172-2X-14-XX:
     (ALL : ALL) ALL
 ```
 ## 7. CREATE SSH KEYPAIR FOR GRADER USING THE SSH-KEYGEN TOOL
+----
 
 ### On .shh in your local terminal machine:
 - open your terminal on your local machine
@@ -121,7 +126,9 @@ sudo chmod 644 .ssh/authorized_keys
 ```
 Close terminal sesssion and check grader account to test connectty
 - `ssh -i ~/.ssh/grader grader@34.201.105.57 -p 2200`
+
 ## 8. Install Apache2
+----
 - `Install Apache2 & WSGI package`
 - `sudo apt-get install apache2`
 - `sudo apt-get install libapache2-mod-wsgi`
@@ -130,6 +137,7 @@ Close terminal sesssion and check grader account to test connectty
 - Verify apache2 Ubuntu Default Page.
 
 ## 9. Install PostgreSQL Database and create tables 
+----
 - Install software `sudo apt-get install postgresql`
 - Setting up ubuntu role:
 - Switch to root user:
@@ -148,6 +156,7 @@ Close terminal sesssion and check grader account to test connectty
 - change engine of database both application python file and creating database file in ypur python script **`engine = create_engine('postgresql://catalog:password@localhost/catalog')`**
 
 ## 10. Clone Project
+----
 - Install GIT `sudo apt-get install git`
 - Create directory to save project cd /var/www `sudo mkdir webApp`
 - create one more directory in cd /var/www/webApp `sudo mkdir webApp`
@@ -158,6 +167,7 @@ Close terminal sesssion and check grader account to test connectty
 - rename the **app.py** file by   `sudo mv app.py    __init__py`
 
 ## 11. Install Missing Libraries
+----
 - Install the follwoing dependencies:
 - `sudo -H apt-get install python-pip`
 - `sudo -H pip install flask`
@@ -167,6 +177,7 @@ Close terminal sesssion and check grader account to test connectty
 - `sudo -H pip install psycopg2-binary.`
 
 ## 12. Customise the Apache
+----
 - Configure Apache to handle requests using the **WSGI module.** there is already default set file in `/etc/apache2/sites-enabled/000-default.conf.` but we need to create new one
 - Lets create a new file with:
 `sudo nano /etc/apache2/sites-enabled/webApp.conf`
@@ -197,6 +208,7 @@ The /etc/apache2/sites-enabled/webApp.conf should now look like this:
 - Enable the virtual Host `sudo a2ensite webApp`
 
 ## 13. Writing WSGI Script
+----
 - Create and config the .wsgi file `sudo nano /var/www/webApp/webapp.wsgi`
 - Add the following content
 
@@ -215,7 +227,8 @@ application.secret_key = 'secretkey'
 - `sudo service apache2 restart`
 
 ## Troubleshooting
-- if you have port500 error please run `sudo tail /var/log/apache2/error.log` and check the errors
+----
+- if you have port 500 error please run `sudo tail /var/log/apache2/error.log` and check the errors
 - dont forget the change JSON file location in your script
 - Google Authorization need valid domain name, **xip.io** extension of domain name is not accepted after 2020
 
