@@ -66,9 +66,23 @@ This documents explains how to deploy your Python Flask application
 ## 6.  
 Some basic Git commands are:
 ```
-git status
-git add
-git commit
+To                         Action      From
+--                         ------      ----
+Apache                     ALLOW       Anywhere                  
+22/tcp                     ALLOW       Anywhere                  
+2200/tcp                   ALLOW       Anywhere                  
+123/udp                    ALLOW       Anywhere                  
+80/tcp                     ALLOW       Anywhere                  
+22                         DENY        Anywhere                  
+2200                       ALLOW       Anywhere                  
+Apache (v6)                ALLOW       Anywhere (v6)             
+22/tcp (v6)                ALLOW       Anywhere (v6)             
+2200/tcp (v6)              ALLOW       Anywhere (v6)             
+123/udp (v6)               ALLOW       Anywhere (v6)             
+80/tcp (v6)                ALLOW       Anywhere (v6)             
+22 (v6)                    DENY        Anywhere (v6)             
+2200 (v6)                  ALLOW       Anywhere (v6)             
+
 ```
 
  
