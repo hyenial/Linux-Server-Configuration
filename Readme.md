@@ -48,7 +48,8 @@ This documents explains how to deploy your Python Flask application
 ## 4. ADD Rules in AWS Lighthouse PAge
 ----
 - it is important to add new countom port on AWS manage page under the **NETWORKING** tab
-- | Custom | TCP | 2200 |
+
+ | Custom | TCP | 2200 |
 | Custom | TCP | 5000 |
 | Custom | TCP | 8000 |
 | Custom | udp | 123  |
