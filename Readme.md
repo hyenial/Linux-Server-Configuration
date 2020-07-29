@@ -5,8 +5,8 @@ This documents explains how to deploy your Python Flask application
 
 ## About
 - Deploying system requires Linux virtual machine. I used [AWS Lightsail](https://aws.amazon.com/lightsail/).
-- public link is http://18.212.232.50.xip.io/
-- ip 18.212.232.50
+- public link is http://34.201.105.57.xip.io/
+- ip 34.201.105.57
 
 
 ## Skills used for this project
@@ -61,10 +61,7 @@ This documents explains how to deploy your Python Flask application
 - `sudo ufw deny 22` # Deny tcp and udp packets**
 - `sudo ufw enable` **The output should be like this Command may disrupt existing ssh connections. Proceed with operation (y|n)? y Firewall is active and enabled on system startup**
 - `sudo ufw status Status` . **check the port**
-
-
-## 6.  
-Some basic Git commands are:
+- Your output should like this
 ```
 To                         Action      From
 --                         ------      ----
@@ -84,12 +81,143 @@ Apache (v6)                ALLOW       Anywhere (v6)
 2200 (v6)                  ALLOW       Anywhere (v6)             
 
 ```
+## 6. Create Grader User
+- Install finger to manage user by `sudo apt-get install finger`
+- to create user `sudo adduser grader`
+- Set password and details for user.
+- check grader by `finger grader`
+- Set the password and fill out info.
+- Grant sudo access `sudo visudo`
+- Add the following line after root `ALL=(ALL:ALL) ALL:`
+- `grader ALL=(ALL:ALL) ALL`
+- Save and close the file.
+- check the sudo permissioon by `sudo -l`
+- 
+```
+Matching Defaults entries for grader on ip-172-2X-14-XX:
+    env_reset, mail_badpass,
+    secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin
 
- 
+User grader may run the following commands on ip-172-2X-14-XX:
+    (ALL : ALL) ALL
+    (ALL : ALL) ALL
+```
+## 7. CREATE SSH KEYPAIR FOR GRADER USING THE SSH-KEYGEN TOOL
 
+### On .shh in your local terminal machine:
+- open your terminal on your local machine
+- Create keys `ssh-keygen`
+- Choose a location for the tow files `~/.ssh/authorized_keys`
+- Open the file and copy the content `sudo nano .ssh/authorized_keys`
+- In the **grader** account, create the following directories:
+- `sudo mkdir .ssh`
+-` cd .ssh`
+- `sudo nano authorized_keys`
+- **Paste the public key into authorized_keys file. Save and close.**
+- **Grant permissions**
+```
+sudo chmod 700 .ssh
+sudo chmod 644 .ssh/authorized_keys
+```
+Close terminal sesssion and check grader account to test connectty
+- `ssh -i ~/.ssh/grader grader@34.201.105.57 -p 2200`
+## 8. Install Apache2
+- `Install Apache2 & WSGI package`
+- `sudo apt-get install apache2`
+- `sudo apt-get install libapache2-mod-wsgi`
+- Enable mod_wsgi: `sudo a2enmod wsgi`
+- `sudo service apache2 start`
+- Verify apache2 Ubuntu Default Page.
+
+## 9. Install PostgreSQL Database and create tables 
+- Install software `sudo apt-get install postgresql`
+- Setting up ubuntu role:
+- Switch to root user:
+- `sudo -u postgres psql`
+- alter user postgres with password 'password';
+- Create role
+- `create role catalog superuser;`
+-  create database catalog
+-  Create role catalog;
+- Allow catalog role to create a db:
+- `alter role catalog CREATEDB;`
+- Create catalog database
+- `create database catalog`
+- Exit psql:
+- `\q`
+- change engine of database both application python file and creating database file in ypur python script **`engine = create_engine('postgresql://catalog:password@localhost/catalog')`**
+
+## 10. Clone Project
+- Install GIT `sudo apt-get install git`
+- Create directory to save project cd /var/www `sudo mkdir webApp`
+- create one more directory in cd /var/www/webApp `sudo mkdir webApp`
+ totally you should create 2 directory under the www folder
+`sudo chown -R grader:grader webApp`
+- cd webApp/webApp
+- git clone https://github.com/user/project.git
+- rename the **app.py** file by   `sudo mv app.py    __init__py`
+
+## 11. Install Missing Libraries
+- Install the follwoing dependencies:
+- `sudo -H apt-get install python-pip`
+- `sudo -H pip install flask`
+- `sudo -H pip install flask sqlalchemy`
+- `sudo -H pip install --upgrade google-api-python-client oauth2client`
+- `sudo -H pip install requests`
+- `sudo -H pip install psycopg2-binary.`
+
+## 12. Customise the Apache
+- Configure Apache to handle requests using the **WSGI module.** there is already default set file in `/etc/apache2/sites-enabled/000-default.conf.` but we need to create new one
+- Lets create a new file with:
+`sudo nano /etc/apache2/sites-enabled/webApp.conf`
+
+The /etc/apache2/sites-enabled/webApp.conf should now look like this:
+```
+<VirtualHost *:80>
+                ServerName 34.201.XX.XX.XX
+                ServerAdmin harun.yenial@gmail.com
+                WSGIScriptAlias / /var/www/webApp/webapp.wsgi
+                <Directory /var/www/webApp/webApp/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                Alias /static /var/www/webApp/webApp/static
+                <Directory /var/www/webApp/webApp/static/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                LogLevel warn
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+```
+- Enable the virtual host with the following command:
+- Reload Apache with
+- `sudo service apache2 reload`. 
+- Enable the virtual Host `sudo a2ensite webApp`
+
+## 13. Writing WSGI Script
+- Create and config the .wsgi file `sudo nano /var/www/webApp/webapp.wsgi`
+- Add the following content
+
+```
+import sys
+import logging
+logging.basicConfig(stream=sys.stderr)
+sys.path.insert(0,"/var/www/webApp/")
+sys.path.insert(0,"/var/www/webApp/webApp")
+from webApp import app as application
+application.secret_key = 'secretkey'
+```
+
+- run your script to check any bugs before serving. `python webapp.wsgi`
+- if there is a missing package use `sudo -H pip XXXX`
+- `sudo service apache2 restart`
 
 ## Troubleshooting
-
+- if you have port500 error please run `sudo tail /var/log/apache2/error.log` and check the errors
+- dont forget the change JSON file location in your script
+- Google Authorization need valid domain name, **xip.io** extension of domain name is not accepted after 2020
 
 
 
