@@ -14,7 +14,7 @@ This documents explains how to deploy your Python Flask application
 - Python Flask and WSGI
 - [Apache2](https://httpd.apache.org/)
 - Ubuntu 18.04 
-- creating database by Psotgress SQL
+- creating database by Postgress SQL
 
 
 # Server Configuration Instruction
