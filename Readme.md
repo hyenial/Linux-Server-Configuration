@@ -36,7 +36,7 @@ This documents explains how to deploy your Python Flask application
 - Save the file in your .ssh folder.
 - Restric file permission by running chmod 600 LightsailDefaultPrivateKey-*.pem
 - Change the file name to aws.rsa.
-- To connect run in your terminal `ssh -i ~/.ssh/lightsail_key.rsa ubuntu@18.212.232.50`
+- To connect run in your terminal `ssh -i ~/.ssh/lightsail_key.rsa ubuntu@34.201.105.57`
 
 ## 3. CHANGE THE SERVER PORT
 ----
