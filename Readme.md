@@ -5,8 +5,8 @@ This documents explains how to deploy your Python Flask application
 
 ## About
 - Deploying system requires Linux virtual machine. I used [AWS Lightsail](https://aws.amazon.com/lightsail/).
-- public link is http://34.201.105.57.xip.io/
-- ip 34.201.105.57
+- public link is http://54.90.129.96.xip.io/
+- ip 54.90.129.96
 
 
 ## Skills used for this project
@@ -190,7 +190,7 @@ Close terminal sesssion and check grader account to test connectty
 The /etc/apache2/sites-enabled/webApp.conf should now look like this:
 ```
 <VirtualHost *:80>
-                ServerName 34.201.XX.XX.XX
+                ServerName 54.90.129.96
                 ServerAdmin harun.yenial@gmail.com
                 WSGIScriptAlias / /var/www/webApp/webapp.wsgi
                 <Directory /var/www/webApp/webApp/>
@@ -244,6 +244,7 @@ application.secret_key = 'secretkey'
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-fix-permission-denied-errors/
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-server-refused-our-key/
 - error handling https://github.com/jungleBadger/-nanodegree-linux-server-troubleshoot
+- public and private key handling https://www.digitalocean.com/community/questions/ubuntu-16-04-creating-new-user-and-adding-ssh-keys
 
 
 
