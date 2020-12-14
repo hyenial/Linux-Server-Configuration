@@ -4,8 +4,8 @@
 This documents explains how to deploy your Python Flask application
 
 ## About
-- Deploying system requires Linux virtual machine. I used [AWS Lightsail](https://aws.amazon.com/lightsail/).
-- public link is http://54.90.129.96/
+- Deploying system requires Linux virtual machine. I used [AWS Lightsail](https://aws.amazon.com/lightsail/)., but you can also use Aws EC2. 
+- public link is http://54.92.145.88/
 
 
 ## Skills used for this project
