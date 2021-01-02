@@ -245,6 +245,7 @@ application.secret_key = 'secretkey'
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-server-refused-our-key/
 - error handling https://github.com/jungleBadger/-nanodegree-linux-server-troubleshoot
 - public and private key handling https://www.digitalocean.com/community/questions/ubuntu-16-04-creating-new-user-and-adding-ssh-keys
+- Linux cheat sheet https://cheatography.com/davechild/cheat-sheets/linux-command-line/
 
 
 
