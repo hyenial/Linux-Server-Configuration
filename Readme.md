@@ -238,14 +238,13 @@ application.secret_key = 'secretkey'
 - You can access the logs of the application on the apache logs, they are located, by default, on `/var/log/apache2/access.log` or `/var/log/apache2/error.log` for errors.You'll need sudo access to read the files.
 
 ## Resorces
-- How to Deploy a Flask App to a Linux Server  https://www.youtube.com/watch?v=YFBRVJPhDGY
-- How To Deploy a Flask Application on an Ubuntu VPS https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps 
-- 20 Basic Ubuntu Commands And Terminal Shortcuts Every Beginner Must Know https://techlog360.com/basic-ubuntu-commands-terminal-shortcuts-linux-beginner/
+- [How to Deploy a Flask App to a Linux Server  ] (https://www.youtube.com/watch?v=YFBRVJPhDGY) 
+- [How To Deploy a Flask Application on an Ubuntu VPS] (https://www.digitalocean.com/community/tutorials/how-to-deploy-a-flask-application-on-an-ubuntu-vps )  
+- [20 Basic Ubuntu Commands And Terminal Shortcuts Every Beginner Must Know ] (https://techlog360.com/basic-ubuntu-commands-terminal-shortcuts-linux-beginner/) 
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-fix-permission-denied-errors/
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-server-refused-our-key/
 - error handling https://github.com/jungleBadger/-nanodegree-linux-server-troubleshoot
-- public and private key handling https://www.digitalocean.com/community/questions/ubuntu-16-04-creating-new-user-and-adding-ssh-keys
-- Linux cheat sheet https://cheatography.com/davechild/cheat-sheets/linux-command-line/
-
+- [public and private key handling] (https://www.digitalocean.com/community/questions/ubuntu-16-04-creating-new-user-and-adding-ssh-keys) 
+- [Linux cheat sheet] (https://cheatography.com/davechild/cheat-sheets/linux-command-line/)
 
 
