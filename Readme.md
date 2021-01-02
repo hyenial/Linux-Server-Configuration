@@ -243,7 +243,7 @@ application.secret_key = 'secretkey'
 - [20 Basic Ubuntu Commands And Terminal Shortcuts Every Beginner Must Know ](https://techlog360.com/basic-ubuntu-commands-terminal-shortcuts-linux-beginner/) 
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-linux-fix-permission-denied-errors/
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-server-refused-our-key/
-- error handling https://github.com/jungleBadger/-nanodegree-linux-server-troubleshoot
+- [error handling](https://github.com/jungleBadger/-nanodegree-linux-server-troubleshoot)
 - [public and private key handling](https://www.digitalocean.com/community/questions/ubuntu-16-04-creating-new-user-and-adding-ssh-keys) 
 - [Linux cheat sheet](https://cheatography.com/davechild/cheat-sheets/linux-command-line/)
 - [Go to the Support Web Site](https://support.west-wind.com)
