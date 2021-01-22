@@ -172,13 +172,14 @@ Close terminal sesssion and check grader account to test connectty
 
 ## 11. Install Missing Libraries
 ----
-- Install the follwoing dependencies:
+- Install the follwoing dependencies: (for python2)
 - `sudo -H apt-get install python-pip`
 - `sudo -H pip install flask`
 - `sudo -H pip install flask sqlalchemy`
 - `sudo -H pip install --upgrade google-api-python-client oauth2client`
 - `sudo -H pip install requests`
 - `sudo -H pip install psycopg2-binary.`
+- if you install python3 your code should continue `sudo -H pip3 install flask`
 
 ## 12. Customise the Apache
 ----
