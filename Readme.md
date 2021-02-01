@@ -5,7 +5,7 @@ This documents explains how to deploy your Python Flask application
 
 ## About
 - Deploying system requires Linux virtual machine. I used [AWS Lightsail](https://aws.amazon.com/lightsail/)., but you can also use Aws EC2. 
-- public link is http://54.90.149.89/
+- public link is http://50.16.76.250/
 
 
 ## Skills used for this project
@@ -35,7 +35,7 @@ This documents explains how to deploy your Python Flask application
 - Save the file in your .ssh folder.
 - Restric file permission by running chmod 600 LightsailDefaultPrivateKey-*.pem
 - Change the file name to aws.rsa.
-- To connect run in your terminal `ssh -i ~/.ssh/lightsail_key.rsa ubuntu@34.201.105.57`
+- To connect run in your terminal `ssh -i ~/.ssh/aws.rsa ubuntu@34.201.105.57`
 
 ## 3. CHANGE THE SERVER PORT
 ----
