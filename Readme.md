@@ -233,10 +233,12 @@ application.secret_key = 'secretkey'
 
 ## Troubleshooting
 ----
-- if you have port 500 error please run `sudo tail /var/log/apache2/error.log` and check the errors
+- if you have port 500 error please run `sudo tail /var/log/apache2/error.log`  and `sudo tail -100 /var/log/apache2/access.log` and check the errors
 - dont forget the change JSON file location in your script
 - Google Authorization need valid domain name, **xip.io** extension of domain name is not accepted after 2020
 - You can access the logs of the application on the apache logs, they are located, by default, on `/var/log/apache2/access.log` or `/var/log/apache2/error.log` for errors.You'll need sudo access to read the files.
+- 
+`
 
 ## Resorces
 - [How to Deploy a Flask App to a Linux Server  ](https://www.youtube.com/watch?v=YFBRVJPhDGY) 
