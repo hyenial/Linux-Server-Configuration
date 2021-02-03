@@ -250,6 +250,6 @@ application.secret_key = 'secretkey'
 - [public and private key handling](https://www.digitalocean.com/community/questions/ubuntu-16-04-creating-new-user-and-adding-ssh-keys) 
 - [Linux cheat sheet](https://cheatography.com/davechild/cheat-sheets/linux-command-line/)
 - [Go to the Support Web Site](https://support.west-wind.com)
-- [How To View Apache Access & Error Logs]https://phoenixnap.com/kb/apache-access-log
+- [How To View Apache Access & Error Logs](https://phoenixnap.com/kb/apache-access-log)
 
 
