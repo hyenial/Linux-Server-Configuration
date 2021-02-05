@@ -190,8 +190,8 @@ Close terminal sesssion and check grader account to test connectty
 The /etc/apache2/sites-enabled/webApp.conf should now look like this:
 ```
 <VirtualHost *:80>
-                ServerName 54.90.129.96
-                ServerAdmin harun.yenial@gmail.com
+                ServerName XX.XXX.XXX
+                ServerAdmin email@gmail.com
                 WSGIScriptAlias / /var/www/webApp/webapp.wsgi
                 <Directory /var/www/webApp/webApp/>
                         Order allow,deny
