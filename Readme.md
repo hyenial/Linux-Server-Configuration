@@ -225,7 +225,7 @@ logging.basicConfig(stream=sys.stderr)
 sys.path.insert(0,"/var/www/webApp/")
 sys.path.insert(0,"/var/www/webApp/webApp")
 from webApp import app as application
-application.secret_key = 'secretkey'
+application.secret_key = 'xxxxxx'
 ```
 
 - run your script to check any bugs before serving. `python webapp.wsgi`
